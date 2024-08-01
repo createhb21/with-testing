@@ -4,7 +4,6 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  swcMinify: true,
   experimental: {
     typedRoutes: true,
   },
