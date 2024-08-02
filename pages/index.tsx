@@ -7,7 +7,7 @@ import { ROUTER } from '@/constants/router';
 
 export default function Home() {
   const router = useRouter();
-  const goSignInPage = () => router.push(ROUTER.AUTH.SIGNIN);
+  const goSignIn = () => router.push(ROUTER.AUTH.SIGNIN);
 
   return (
     <FullScreen as="main">
@@ -16,7 +16,7 @@ export default function Home() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/ably.png" alt="ably logo" style={{ width: '50%', margin: '0 auto' }} />
         </Flex>
-        <Button size="3" variant="soft" onClick={goSignInPage}>
+        <Button size="3" variant="soft" onClick={goSignIn}>
           Sign in
         </Button>
       </Flex>
