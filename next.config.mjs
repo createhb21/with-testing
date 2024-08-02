@@ -8,6 +8,9 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   swcMinify: true,
+  compiler: {
+    styledComponents: true,
+  },
 };
 
-module.exports = nextConfig;
+export default nextConfig;
