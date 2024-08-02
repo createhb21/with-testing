@@ -5,6 +5,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "prettier": "prettier --write .",
     "lint": "eslint '**/*.{js,jsx,ts,tsx}' --fix",
     "test:unit": "jest",
     "test:watch": "jest --watch",

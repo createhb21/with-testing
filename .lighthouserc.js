@@ -2,31 +2,31 @@
 module.exports = {
   ci: {
     collect: {
-      startServerCommand: "yarn dev",
-      url: ["http://localhost:3000"],
-      numberOfRuns: 3
+      startServerCommand: 'yarn dev',
+      url: ['http://localhost:3000'],
+      numberOfRuns: 3,
     },
     upload: {
-      target: "filesystem",
-      outputDir: "./lhci_reports",
-      reportFilenamePattern: "%%PATHNAME%%-%%DATETIME%%-report.%%EXTENSION%%"
+      target: 'filesystem',
+      outputDir: './lhci_reports',
+      reportFilenamePattern: '%%PATHNAME%%-%%DATETIME%%-report.%%EXTENSION%%',
     },
     // NOTE - https://github.com/GoogleChrome/lighthouse-ci/blob/main/docs/configuration.md#preset
     assert: {
       assertions: {
-        "categories:performance": [
-          "warn",
+        'categories:performance': [
+          'warn',
           {
-            minScore: 0.7
-          }
+            minScore: 0.7,
+          },
         ],
-        "categories:accessibility": [
-          "warn",
+        'categories:accessibility': [
+          'warn',
           {
-            minScore: 0.7
-          }
-        ]
-      }
-    }
-  }
+            minScore: 0.7,
+          },
+        ],
+      },
+    },
+  },
 };
