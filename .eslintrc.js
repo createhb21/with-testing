@@ -79,6 +79,7 @@ module.exports = {
     'jsx-a11y/label-has-associated-control': 'off',
     'react/jsx-uses-vars': 'error',
     'react/jsx-uses-react': 'error',
+    'react/require-default-props': 'off',
     'unused-imports/no-unused-imports': 'error',
     'unused-imports/no-unused-vars': [
       'warn',
