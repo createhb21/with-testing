@@ -148,7 +148,7 @@ jobs:
           key: ${{ needs.job_install_dependencies.outputs.dependency_cache_key }}
 
       - name: Install cypress dependencies
-        run: npm install cypress
+        run: yarn add cypress
 
       - name: Cypress run
         uses: cypress-io/github-action@v4
@@ -187,7 +187,7 @@ jobs:
           key: ${{ env.BUILD_CACHE_KEY }}
 
       - name: Install global @lhci/cli dependencies
-        run: npm install -g @lhci/cli
+        run: yarn add global @lhci/cli
 
       - name: Run Lighthouse CI
         env:
