@@ -1,7 +1,7 @@
-// Button.test.tsx
-
 import React from 'react';
+
 import { render, screen, fireEvent } from '@/utils/test/testUtils';
+
 import { Button } from './Button'; // Button 컴포넌트 가져오기
 
 describe('Button Component Tests', () => {
