@@ -36,8 +36,6 @@
     "eslint": "^8.56.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^18.0.0",
-    "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-jest": "^28.5.0",
