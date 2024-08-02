@@ -1,12 +1,12 @@
-import { render } from "@testing-library/react";
-import Home from "pages";
+import { render } from '@testing-library/react';
+import Home from 'pages';
 
-describe("HomePage", () => {
+describe('HomePage', () => {
   const renderHomePage = () => render(<Home />);
 
   it('Should be visible "app/page.tsx"', () => {
     const { container } = renderHomePage();
 
-    expect(container).toHaveTextContent("src/pages/index.tsx");
+    expect(container).toHaveTextContent('src/pages/index.tsx');
   });
 });

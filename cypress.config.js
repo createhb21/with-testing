@@ -1,6 +1,6 @@
 module.exports = {
   // set your project id: https://cloud.cypress.io/
-  projectId: "ez6gmo",
+  projectId: 'ez6gmo',
   e2e: {
     // We've imported your old cypress plugins here.
     // You may want to clean this up later by importing these.
@@ -8,6 +8,6 @@ module.exports = {
     setupNodeEvents(_on, _config) {
       // ...
     },
-    baseUrl: "http://localhost:3000"
-  }
+    baseUrl: 'http://localhost:3000',
+  },
 };

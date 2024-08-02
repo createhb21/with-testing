@@ -10,7 +10,7 @@ env:
   CACHED_DEPENDENCY_PATHS: ${{ github.workspace }}/node_modules
   CACHED_BUILD_PATHS: ${{ github.workspace }}/.next
   BUILD_CACHE_KEY: ${{ github.sha }}
-  DEFAULT_NODE_VERSION: "18"
+  DEFAULT_NODE_VERSION: '18'
 
 jobs:
   job_install_dependencies:
@@ -96,10 +96,10 @@ jobs:
 
       - name: Check Lint
         if: ${{ github.event_name == 'pull_request' }}
-        run: yarn lint:changed-since
+        run: yarn lint
 
       - name: Check Unit Test
-        run: yarn test:unit:changed-since
+        run: yarn test:coverage
 
   job_codecov_test_coverage:
     name: set codecov test coverage
@@ -121,9 +121,6 @@ jobs:
           path: ${{ env.CACHED_DEPENDENCY_PATHS }}
           key: ${{ needs.job_install_dependencies.outputs.dependency_cache_key }}
 
-      - name: Create Unit Test Coverage
-        run: yarn test:coverage
-
       - name: Set unit test coverage
         uses: codecov/codecov-action@v2
         with:
@@ -132,6 +129,7 @@ jobs:
 
   job_check_e2e_test:
     name: check e2e test
+    if: github.event_name != 'push'
     needs: [job_install_dependencies]
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -150,7 +148,7 @@ jobs:
           key: ${{ needs.job_install_dependencies.outputs.dependency_cache_key }}
 
       - name: Install cypress dependencies
-        run: npm install cypress
+        run: yarn add cypress
 
       - name: Cypress run
         uses: cypress-io/github-action@v4
@@ -166,6 +164,7 @@ jobs:
 
   job_lhci:
     name: Lighthouse CI
+    if: github.event_name != 'push'
     needs: [job_build]
     runs-on: ubuntu-latest
     steps:
@@ -188,7 +187,7 @@ jobs:
           key: ${{ env.BUILD_CACHE_KEY }}
 
       - name: Install global @lhci/cli dependencies
-        run: npm install -g @lhci/cli
+        run: yarn add global @lhci/cli
 
       - name: Run Lighthouse CI
         env:
@@ -291,5 +290,5 @@ jobs:
         with:
           workflow-id: ci.yml
           base-branch: main
-          create-issue: true
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
