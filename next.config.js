@@ -8,9 +8,6 @@ const nextConfig = {
     ignoreBuildErrors: true
   },
   swcMinify: true
-  // experimental: {
-  //   typedRoutes: true,
-  // },
 };
 
 module.exports = nextConfig;
