@@ -126,6 +126,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           version: 'v0.1.15'
+          fail_ci_if_error: true
 
   job_check_e2e_test:
     name: check e2e test
