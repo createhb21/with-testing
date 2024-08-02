@@ -132,7 +132,6 @@ jobs:
 
   job_check_e2e_test:
     name: check e2e test
-    if: github.event_name != 'push'
     needs: [job_install_dependencies]
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -293,4 +292,4 @@ jobs:
           workflow-id: ci.yml
           base-branch: main
           create-issue: true
-          github-token: ${{ github.token }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
