@@ -26,7 +26,7 @@ const CustomButton = styled(Button)`
 
 export default function Home() {
   const router = useRouter();
-  const goSignInPage = () => router.push(ROUTER.AUTH.SIGNIN);
+  const goSignIn = () => router.push(ROUTER.AUTH.SIGNIN);
 
   return (
     <FullScreen as="main">
@@ -38,7 +38,7 @@ export default function Home() {
         {/* <Button size="3" variant="soft" onClick={goSignInPage}>
           Sign in
         </Button> */}
-        <CustomButton onClick={goSignInPage}>
+        <CustomButton onClick={goSignIn}>
           Sign In
         </CustomButton>
       </Flex>
