@@ -15,7 +15,8 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "test:e2e": "start-server-and-test dev http://localhost:3000 cypress:run",
-    "ci:lh": "lhci autorun"
+    "ci:lh": "lhci autorun",
+    "postinstall": "husky install"
   },
   "dependencies": {
     "next": "^14.2.5",
@@ -48,12 +49,21 @@
     "eslint-plugin-simple-import-sort": "^12.1.0",
     "eslint-plugin-testing-library": "^6.2.0",
     "eslint-plugin-unused-imports": "^4.0.1",
+    "husky": "^8.0.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
+    "lint-staged": "^15.2.7",
+    "pinst": "^3.0.0",
     "prettier": "^3.3.3",
     "react-test-renderer": "^18.3.1",
     "start-server-and-test": "^1.14.0",
     "typescript": "^5.3.2"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
   },
   "packageManager": "yarn@4.2.2"
 }
