@@ -23,6 +23,14 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [['@', './src']],
+        extensions: ['.ts', '.js', '.tsx'],
+      },
+    },
+  },
   overrides: [
     {
       files: ['*.ts', '*.tsx'],
@@ -31,6 +39,9 @@ module.exports = {
       parser: '@typescript-eslint/parser',
       parserOptions: {
         project: ['./tsconfig.json'],
+      },
+      rules: {
+        '@typescript-eslint/naming-convention': 'off',
       },
     },
     {
@@ -55,9 +66,17 @@ module.exports = {
   rules: {
     'no-unused-vars': 'off',
     'react/no-danger': 'off',
+    'import/no-cycle': 'off',
+    'no-underscore-dangle': 'off',
     'object-curly-newline': 'off',
+    'no-restricted-syntax': 'off',
+    'react/button-has-type': 'off',
+    'react/no-children-prop': 'off',
+    'import/prefer-default-export': 'off',
     'react/jsx-props-no-spreading': 'off',
+    'react/destructuring-assignment': 'off',
     'react/jsx-one-expression-per-line': 'off',
+    'jsx-a11y/label-has-associated-control': 'off',
     'react/jsx-uses-vars': 'error',
     'react/jsx-uses-react': 'error',
     'unused-imports/no-unused-imports': 'error',

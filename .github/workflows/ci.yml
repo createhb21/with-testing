@@ -166,7 +166,7 @@ jobs:
       - name: Run Lighthouse CI
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-        run: yarn ci:lh
+        run: yarn lighthouse:run
       - name: Format lighthouse score
         id: format_lighthouse_score
         uses: actions/github-script@v6
