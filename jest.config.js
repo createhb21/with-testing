@@ -5,9 +5,7 @@ const createJestConfig = nextJest({
 });
 
 const customJestConfig = {
-  setupFiles: [
-    // add your setup files..
-  ],
+  setupFiles: [],
   setupFilesAfterEnv: [
     '<rootDir>/jest.setup.ts',
   ],
@@ -27,7 +25,5 @@ const customJestConfig = {
 
 module.exports = async () => ({
   ...await createJestConfig(customJestConfig)(),
-  transformIgnorePatterns: [
-    // add your transform ignore patterns..
-  ],
+  transformIgnorePatterns: [],
 });

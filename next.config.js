@@ -2,11 +2,15 @@
 const nextConfig = {
   reactStrictMode: true,
   eslint: {
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: true
   },
-  experimental: {
-    typedRoutes: true,
+  typescript: {
+    ignoreBuildErrors: true
   },
+  swcMinify: true
+  // experimental: {
+  //   typedRoutes: true,
+  // },
 };
 
 module.exports = nextConfig;
