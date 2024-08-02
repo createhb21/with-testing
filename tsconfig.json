@@ -28,13 +28,6 @@
       }
     ]
   },
-  "include": [
-    "@types",
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    "./jest-setup.ts"
-  ],
+  "include": ["@types", "next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "./jest-setup.ts"],
   "exclude": ["node_modules", "cypress"]
 }

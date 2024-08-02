@@ -125,7 +125,7 @@ jobs:
         uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          fail_ci_if_error: true
+          version: 'v0.1.15'
 
   job_check_e2e_test:
     name: check e2e test
@@ -187,12 +187,12 @@ jobs:
           key: ${{ env.BUILD_CACHE_KEY }}
 
       - name: Install global @lhci/cli dependencies
-        run: yarn add global @lhci/cli
+        run: yarn add @lhci/cli
 
       - name: Run Lighthouse CI
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-        run: lhci autorun || echo "Fail to Run Lighthouse CI!"
+        run: yarn ci:lh
       - name: Format lighthouse score
         id: format_lighthouse_score
         uses: actions/github-script@v6
