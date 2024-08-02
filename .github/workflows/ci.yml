@@ -10,7 +10,7 @@ env:
   CACHED_DEPENDENCY_PATHS: ${{ github.workspace }}/node_modules
   CACHED_BUILD_PATHS: ${{ github.workspace }}/.next
   BUILD_CACHE_KEY: ${{ github.sha }}
-  DEFAULT_NODE_VERSION: "18"
+  DEFAULT_NODE_VERSION: '18'
 
 jobs:
   job_install_dependencies:
@@ -290,5 +290,5 @@ jobs:
         with:
           workflow-id: ci.yml
           base-branch: main
-          create-issue: true
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

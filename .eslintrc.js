@@ -28,7 +28,6 @@ module.exports = {
       files: ['*.ts', '*.tsx'],
       extends: ['airbnb-typescript', 'plugin:@typescript-eslint/recommended'],
       plugins: ['@typescript-eslint'],
-      rules: {},
       parser: '@typescript-eslint/parser',
       parserOptions: {
         project: ['./tsconfig.json'],
