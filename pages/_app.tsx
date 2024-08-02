@@ -28,7 +28,12 @@ export default function App(props: AppProps) {
   return (
     <>
       <Head>
-        <title>에이블리 - 모두가 더 나은 삶을 살 수 있는 넥스트 커머스를 만듭니다</title>
+        <title>에이블리 팀</title>
+        <meta
+          property="description"
+          content="모두가 더 나은 삶을 살 수 있는 넥스트 커머스를 만듭니다"
+          key="description"
+        />
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
