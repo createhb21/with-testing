@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider, HydrationBoundary } from '@tanstack/r
 
 import type { AppProps } from 'next/app';
 
-export default function QueryProvider({
+export function QueryProvider({
   pageProps,
   children,
 }: PropsWithChildren<{ pageProps: AppProps['pageProps'] }>) {

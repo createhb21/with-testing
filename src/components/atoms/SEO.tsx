@@ -20,9 +20,8 @@ export function SEO({ title, description }: { title?: string; description?: stri
     <Head>
       <title>{title || site.siteMetadata.title}</title>
       <meta
-        property="description"
+        name="description"
         content={metaDescription}
-        key="description"
       />
       <meta
         name="twitter:description"

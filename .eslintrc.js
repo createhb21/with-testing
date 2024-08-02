@@ -42,6 +42,8 @@ module.exports = {
       },
       rules: {
         '@typescript-eslint/naming-convention': 'off',
+        '@typescript-eslint/no-explicit-any': 'warn',
+        'import/no-extraneous-dependencies': 'off',
       },
     },
     {
@@ -67,6 +69,7 @@ module.exports = {
     'no-unused-vars': 'off',
     'react/no-danger': 'off',
     'import/no-cycle': 'off',
+    'no-param-reassign': 'off',
     'no-underscore-dangle': 'off',
     'object-curly-newline': 'off',
     'no-restricted-syntax': 'off',
