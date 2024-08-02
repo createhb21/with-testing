@@ -2,6 +2,7 @@ export * from './input';
 export * from './button';
 export * from './fullScreen';
 
+export * from './SEO';
 export * from './Toast';
 export * from './Favicon';
 export * from './ThemeToggle';

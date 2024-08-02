@@ -2,6 +2,7 @@ import '@radix-ui/themes/styles.css';
 import '@/styles/globals.css';
 
 import React from 'react';
+import Head from 'next/head';
 import { ThemeProvider } from 'next-themes';
 import { Theme } from '@radix-ui/themes';
 
@@ -25,12 +26,21 @@ function Pages({ Component, pageProps }: AppProps) {
 
 export default function App(props: AppProps) {
   return (
-    <ThemeProvider
-      disableTransitionOnChange
-      attribute="class"
-      value={{ light: 'light-theme', dark: 'dark-theme' }}
-      defaultTheme="system"
-      children={<Pages {...props} />}
-    />
+    <>
+      <Head>
+        <title>에이블리 - 모두가 더 나은 삶을 살 수 있는 넥스트 커머스를 만듭니다</title>
+        <meta
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width"
+        />
+      </Head>
+      <ThemeProvider
+        disableTransitionOnChange
+        attribute="class"
+        value={{ light: 'light-theme', dark: 'dark-theme' }}
+        defaultTheme="system"
+        children={<Pages {...props} />}
+      />
+    </>
   );
 }
