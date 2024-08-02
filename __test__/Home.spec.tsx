@@ -8,6 +8,6 @@ describe('HomePage', () => {
   it('Should be visible "Sign In"', () => {
     const { container } = renderHomePage();
 
-    expect(container).toHaveTextContent('Sign in');
+    expect(container).toHaveTextContent('Sign In');
   });
 });
