@@ -167,7 +167,6 @@ jobs:
 
   job_lhci:
     name: Lighthouse CI
-    if: github.event_name != 'push'
     needs: [job_build]
     runs-on: ubuntu-latest
     steps:
@@ -293,5 +292,5 @@ jobs:
         with:
           workflow-id: ci.yml
           base-branch: main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          create-issue: true
+          github-token: ${{ github.token }}
