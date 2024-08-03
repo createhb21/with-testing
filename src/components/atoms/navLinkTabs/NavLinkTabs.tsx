@@ -5,7 +5,7 @@ import { useTheme } from 'styled-components';
 
 import useNavLinkTabs from './NavLinkTabs.hooks';
 import { NavLinkTabsProps } from './NavLinkTabs.types';
-import { wrap, item, indicatorStyle } from './NavLinkTabs.css';
+import { wrap, item, indicatorStyle } from './NavLinkTabs.styled';
 
 export function NavLinkTabs({ tabs, toggleLoginDialog }: NavLinkTabsProps) {
   const {
@@ -35,7 +35,7 @@ export function NavLinkTabs({ tabs, toggleLoginDialog }: NavLinkTabsProps) {
 
   return (
     <div style={{ position: 'relative', marginTop: '2px' }}>
-      <div style={wrap}>
+      <div css={wrap}>
         {tabs.map((tab) => (
           <button
             key={tab.title}
@@ -48,7 +48,7 @@ export function NavLinkTabs({ tabs, toggleLoginDialog }: NavLinkTabsProps) {
             {tab.title}
             {pathname === tab.to[0] && current && current.offsetWidth === 0 && (
               <div
-                style={{
+                css={{
                   width: '100%',
                   ...indicatorStyle(gray900),
                 }}
@@ -62,7 +62,7 @@ export function NavLinkTabs({ tabs, toggleLoginDialog }: NavLinkTabsProps) {
         .flat()
         .includes(pathname) && (
         <div
-          style={{
+          css={{
             ...indicatorStyle(gray900),
             width: `${width}px`,
             transition: 'transform 0.3s ease-in-out, width 0.3s ease-in-out',

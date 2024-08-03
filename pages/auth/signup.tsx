@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useRef } from 'react';
-import { Box, Button, Card, Flex, Heading, Text, TextField } from '@radix-ui/themes';
 import { type UseFormReturn, useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
 
-import { FullScreen, ThemeToggle, PanelBackgroundImage } from '@/components/atoms';
+import { InputField } from '@/components/molecules';
+import { FullScreen, PanelBackgroundImage, Button } from '@/components/atoms';
 
 interface ISignUpForm {
   email: string;
@@ -24,64 +24,54 @@ function FormCard({
   console.log('errors:', errors);
 
   return (
-    <Card size="4" style={{ width: 400, position: 'relative' }}>
+    <div style={{ width: 400, position: 'relative' }}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Flex width="100%" align="center" justify="between" mb="5">
-          <Heading as="h3" size="6" trim="start">
+        <div>
+          <div>
             Sign up
-          </Heading>
-          <ThemeToggle style={{ position: 'relative', top: '-1.5px' }} />
-        </Flex>
+          </div>
+        </div>
 
-        <Box mb="5">
-          <label>
-            <Text as="div" size="2" weight="medium" mb="1">
-              Email
-            </Text>
-            <TextField.Root
-              placeholder="Enter your email address"
-              {...register('email', {
-                required: true,
-              })}
-            />
-          </label>
-        </Box>
+        <div>
+          <InputField
+            isRequired
+            label="Email"
+            placeholder="Enter your email address"
+            {...register('email', {
+              required: true,
+            })}
+          />
+        </div>
 
-        <Box mb="5" position="relative">
-          <Flex align="baseline" justify="between" mb="1">
-            <Text as="label" size="2" weight="medium" htmlFor="card-password-field">
-              Password
-            </Text>
-          </Flex>
-          <TextField.Root
+        <div>
+          <InputField
+            isRequired
+            label="Password"
             id="card-password-field"
             placeholder="Enter your password"
             {...register('password', {
               required: true,
             })}
           />
-        </Box>
+        </div>
 
-        <Box mb="5" position="relative">
-          <Flex align="baseline" justify="between" mb="1">
-            <Text as="label" size="2" weight="medium" htmlFor="card-password-field">
-              Confirm Password
-            </Text>
-          </Flex>
-          <TextField.Root
-            id="card-confirm-password-field"
+        <div>
+          <InputField
+            isRequired
+            label="Password Confirm"
+            id="card-password-confirm-field"
             placeholder="Enter your confirm password"
             {...register('confirmPassword', {
               required: true,
             })}
           />
-        </Box>
+        </div>
 
-        <Flex mt="6" justify="end" gap="3">
+        <div>
           <Button type="submit">Sign up</Button>
-        </Flex>
+        </div>
       </form>
-    </Card>
+    </div>
   );
 }
 
@@ -105,17 +95,10 @@ export default function SignUp() {
 
   return (
     <FullScreen as="main">
-      <Flex
-        width="100%"
-        height="100%"
-        align="center"
-        justify="center"
-        position="relative"
-        py={{ initial: '7', xs: '9', sm: '100px' }}
-      >
-        <Flex overflow="hidden" position="absolute" width="100%" height="100%" inset="0">
+      <div>
+        <div style={{ overflow: 'hidden', position: 'absolute', width: '100%', height: '100%', inset: '0' }}>
           <PanelBackgroundImage id="1" />
-        </Flex>
+        </div>
 
         <FormCard
           {...{
@@ -123,7 +106,7 @@ export default function SignUp() {
             onSubmit,
           }}
         />
-      </Flex>
+      </div>
     </FullScreen>
   );
 }

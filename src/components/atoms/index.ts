@@ -5,6 +5,4 @@ export * from './navLinkTabs';
 
 export * from './SEO';
 export * from './Toast';
-export * from './Favicon';
-export * from './ThemeToggle';
 export * from './PanelBackgroundImage';

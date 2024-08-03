@@ -1,10 +1,9 @@
 import React, { useCallback } from 'react';
 import { useRouter } from 'next/router';
-import { Box, Button, Card, Flex, Heading } from '@radix-ui/themes';
 import { type UseFormReturn, useForm } from 'react-hook-form';
 
 import { InputField } from '@/components/molecules';
-import { FullScreen, ThemeToggle, PanelBackgroundImage } from '@/components/atoms';
+import { FullScreen, PanelBackgroundImage, Button } from '@/components/atoms';
 import { ROUTER } from '@/constants/router';
 
 interface ISignInForm {
@@ -28,16 +27,15 @@ function FormCard({
   console.log('errors:', errors);
 
   return (
-    <Card size="4" style={{ width: 400, position: 'relative' }}>
+    <div style={{ width: 400, position: 'relative' }}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Flex width="100%" align="center" justify="between" mb="5">
-          <Heading as="h3" size="6" trim="start">
+        <div>
+          <div>
             Sign in
-          </Heading>
-          <ThemeToggle style={{ position: 'relative', top: '-1.5px' }} />
-        </Flex>
+          </div>
+        </div>
 
-        <Box mb="5">
+        <div>
           <InputField
             isRequired
             label="Email"
@@ -46,9 +44,9 @@ function FormCard({
               required: true,
             })}
           />
-        </Box>
+        </div>
 
-        <Box mb="5" position="relative">
+        <div>
           <InputField
             isRequired
             label="Password"
@@ -58,16 +56,16 @@ function FormCard({
               required: true,
             })}
           />
-        </Box>
+        </div>
 
-        <Flex mt="6" justify="end" gap="3">
-          <Button type="button" variant="soft" onClick={goSignUpPage}>
+        <div>
+          <Button type="button" variant="solid" onClick={goSignUpPage}>
             Create an account
           </Button>
           <Button type="submit">Sign in</Button>
-        </Flex>
+        </div>
       </form>
-    </Card>
+    </div>
   );
 }
 
@@ -82,17 +80,10 @@ export default function SignIn() {
 
   return (
     <FullScreen as="main">
-      <Flex
-        width="100%"
-        height="100%"
-        align="center"
-        justify="center"
-        position="relative"
-        py={{ initial: '7', xs: '9', sm: '100px' }}
-      >
-        <Flex overflow="hidden" position="absolute" width="100%" height="100%" inset="0">
+      <div>
+        <div style={{ overflow: 'hidden', position: 'absolute', width: '100%', height: '100%', inset: '0' }}>
           <PanelBackgroundImage id="1" />
-        </Flex>
+        </div>
 
         <FormCard
           {...{
@@ -101,7 +92,7 @@ export default function SignIn() {
             goSignUpPage,
           }}
         />
-      </Flex>
+      </div>
     </FullScreen>
   );
 }

@@ -34,7 +34,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.ts', '*.tsx'],
+      files: ['**/*.ts', '**/*.tsx'],
       extends: ['airbnb-typescript', 'plugin:@typescript-eslint/recommended'],
       plugins: ['@typescript-eslint'],
       parser: '@typescript-eslint/parser',
@@ -78,6 +78,7 @@ module.exports = {
     'no-restricted-syntax': 'off',
     'react/button-has-type': 'off',
     'react/no-children-prop': 'off',
+    'react/no-unknown-property': 'off',
     'import/prefer-default-export': 'off',
     'react/jsx-props-no-spreading': 'off',
     'react/destructuring-assignment': 'off',

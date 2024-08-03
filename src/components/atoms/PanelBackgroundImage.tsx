@@ -2,7 +2,7 @@ export function PanelBackgroundImage({
   id,
   style,
   ...props
-}: React.ComponentPropsWithoutRef<'svg'> & { id: string }) {
+}: React.ComponentPropsWithoutRef<'svg'> & { id: string, }) {
   return (
     <svg
       width="2560"

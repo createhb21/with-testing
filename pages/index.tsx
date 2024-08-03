@@ -1,8 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { Flex, Button } from '@radix-ui/themes';
 
-import { FullScreen } from '@/components/atoms';
+import { FullScreen, Button } from '@/components/atoms';
 import { ROUTER } from '@/constants/router';
 
 export default function Home() {
@@ -11,15 +10,18 @@ export default function Home() {
 
   return (
     <FullScreen as="main">
-      <Flex direction="column" align="center" justify="center" width="488px" height="100%" style={{ margin: '0 auto' }}>
-        <Flex align="center" justify="center" width="100%" pb="5">
+      <div style={{ margin: '0 auto', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '488px', height: '100%' }}>
+        <div style={{
+          alignItems: 'center', justifyContent: 'center', width: '100%', paddingBottom: '40px',
+        }}
+        >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/ably.png" alt="ably logo" style={{ width: '50%', margin: '0 auto' }} />
-        </Flex>
-        <Button size="3" variant="soft" onClick={goSignIn}>
+        </div>
+        <Button variant="solid" onClick={goSignIn}>
           Sign in
         </Button>
-      </Flex>
+      </div>
     </FullScreen>
   );
 }
