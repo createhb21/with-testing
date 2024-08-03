@@ -61,7 +61,7 @@ const GlobalStyles = createGlobalStyle`
   [tabindex]:focus-visible,
   input:focus-visible,
   button:focus-visible {
-    outline-color: ${({ theme }) => theme.colors.blue40};
+    outline-color: ${({ theme }) => theme.colors.blue7};
   }
 `;
 

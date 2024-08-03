@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { useRouter } from 'next/router';
-import { useAppSelector } from '@/libs/redux/store';
+import { useAppSelector } from '@/libs/redux';
 import { useTheme } from 'styled-components';
 
 import useNavLinkTabs from './NavLinkTabs.hooks';
@@ -8,11 +8,7 @@ import { NavLinkTabsProps } from './NavLinkTabs.types';
 import { wrap, item, indicatorStyle } from './NavLinkTabs.styled';
 
 export function NavLinkTabs({ tabs, toggleLoginDialog }: NavLinkTabsProps) {
-  const {
-    color: {
-      gray: { gray900 },
-    },
-  } = useTheme();
+  const theme = useTheme();
   const { auth } = useAppSelector((state) => state.auth);
 
   const router = useRouter();
@@ -34,12 +30,12 @@ export function NavLinkTabs({ tabs, toggleLoginDialog }: NavLinkTabsProps) {
   };
 
   return (
-    <div style={{ position: 'relative', marginTop: '2px' }}>
+    <div css={{ position: 'relative', marginTop: '2px' }}>
       <div css={wrap}>
         {tabs.map((tab) => (
           <button
             key={tab.title}
-            style={item(tab.to.includes(pathname)) as React.CSSProperties}
+            css={item(theme, tab.to.includes(pathname))}
             onClick={() => handleClick(tab.to[0])}
             ref={(instance) => {
               addRefs(instance, tab.to[0]);
@@ -50,7 +46,7 @@ export function NavLinkTabs({ tabs, toggleLoginDialog }: NavLinkTabsProps) {
               <div
                 css={{
                   width: '100%',
-                  ...indicatorStyle(gray900),
+                  ...indicatorStyle(theme.colors.gray9),
                 }}
               />
             )}
@@ -63,7 +59,7 @@ export function NavLinkTabs({ tabs, toggleLoginDialog }: NavLinkTabsProps) {
         .includes(pathname) && (
         <div
           css={{
-            ...indicatorStyle(gray900),
+            ...indicatorStyle(theme.colors.gray9),
             width: `${width}px`,
             transition: 'transform 0.3s ease-in-out, width 0.3s ease-in-out',
             transform: `translate(${left}px)`,

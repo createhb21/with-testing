@@ -7,19 +7,19 @@ const wrap = css`
   gap: 0 30px;
 `;
 
-const item = (isActive: boolean) => (theme: DefaultTheme) => css`
-  ${theme.fonts.regular14};
-
+const item = (theme: DefaultTheme, isActive: boolean) => css`
+  font-size: 1.4rem;
+  font-weight: 400;
   display: flex;
   flex-direction: row;
   align-items: center;
   position: relative;
   height: 60px;
   text-decoration: none;
-  color: ${({ theme }) => (isActive ? theme.color.gray_80 : theme.color.gray_80)};
+  color: ${({ theme }) => (isActive ? theme.colors.gray8 : theme.colors.gray3)};
 
   :hover {
-    color: ${({ theme }) => (isActive ? theme.color.gray_80 : theme.color.gray_80)};
+    color: ${({ theme }) => (isActive ? theme.colors.gray9 : theme.colors.gray5)};
   }
 `;
 
@@ -28,7 +28,7 @@ const indicatorStyle = (background: string) => css`
   bottom: 1px;
   height: 2px;
   border-radius: 1px;
-  background:${background};
+  background: ${background};
 `;
 
 export { wrap, item, indicatorStyle };

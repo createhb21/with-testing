@@ -11,6 +11,34 @@ interface ISignInForm {
   password: string;
 }
 
+export default function SignInPage() {
+  const methods = useForm<ISignInForm>();
+  const onSubmit = useCallback((data: ISignInForm) => {
+    console.log('data:', data);
+  }, []);
+
+  const router = useRouter();
+  const goSignUpPage = useCallback(() => router.push(ROUTER.AUTH.SIGNUP), []);
+
+  return (
+    <FullScreen as="main">
+      <div>
+        <div style={{ overflow: 'hidden', position: 'absolute', width: '100%', height: '100%', inset: '0' }}>
+          <PanelBackgroundImage id="1" />
+        </div>
+
+        <FormCard
+          {...{
+            methods,
+            onSubmit,
+            goSignUpPage,
+          }}
+        />
+      </div>
+    </FullScreen>
+  );
+}
+
 function FormCard({
   methods,
   onSubmit,
@@ -66,33 +94,5 @@ function FormCard({
         </div>
       </form>
     </div>
-  );
-}
-
-export default function SignIn() {
-  const methods = useForm<ISignInForm>();
-  const onSubmit = useCallback((data: ISignInForm) => {
-    console.log('data:', data);
-  }, []);
-
-  const router = useRouter();
-  const goSignUpPage = useCallback(() => router.push(ROUTER.AUTH.SIGNUP), []);
-
-  return (
-    <FullScreen as="main">
-      <div>
-        <div style={{ overflow: 'hidden', position: 'absolute', width: '100%', height: '100%', inset: '0' }}>
-          <PanelBackgroundImage id="1" />
-        </div>
-
-        <FormCard
-          {...{
-            methods,
-            onSubmit,
-            goSignUpPage,
-          }}
-        />
-      </div>
-    </FullScreen>
   );
 }

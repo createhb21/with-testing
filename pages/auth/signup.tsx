@@ -11,6 +11,42 @@ interface ISignUpForm {
   confirmPassword: string;
 }
 
+export default function SignUpPage() {
+  // const { resolvedTheme } = useTheme();
+
+  const router = useRouter();
+  const methods = useForm<ISignUpForm>();
+  const onSubmit = useCallback((data: ISignUpForm) => {
+    console.log('data:', data);
+    router.back();
+  }, []);
+
+  const closeButton = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (closeButton.current) {
+      closeButton.current.focus();
+    }
+  }, []);
+
+  return (
+    <FullScreen as="main">
+      <div>
+        <div style={{ overflow: 'hidden', position: 'absolute', width: '100%', height: '100%', inset: '0' }}>
+          <PanelBackgroundImage id="1" />
+        </div>
+
+        <FormCard
+          {...{
+            methods,
+            onSubmit,
+          }}
+        />
+      </div>
+    </FullScreen>
+  );
+}
+
 function FormCard({
   methods,
   onSubmit,
@@ -72,41 +108,5 @@ function FormCard({
         </div>
       </form>
     </div>
-  );
-}
-
-export default function SignUp() {
-  // const { resolvedTheme } = useTheme();
-
-  const router = useRouter();
-  const methods = useForm<ISignUpForm>();
-  const onSubmit = useCallback((data: ISignUpForm) => {
-    console.log('data:', data);
-    router.back();
-  }, []);
-
-  const closeButton = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    if (closeButton.current) {
-      closeButton.current.focus();
-    }
-  }, []);
-
-  return (
-    <FullScreen as="main">
-      <div>
-        <div style={{ overflow: 'hidden', position: 'absolute', width: '100%', height: '100%', inset: '0' }}>
-          <PanelBackgroundImage id="1" />
-        </div>
-
-        <FormCard
-          {...{
-            methods,
-            onSubmit,
-          }}
-        />
-      </div>
-    </FullScreen>
   );
 }

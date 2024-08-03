@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import {
   useQuery,
   QueryKey,
@@ -11,8 +10,8 @@ import {
 import { useEffect } from 'react';
 import { AxiosError } from 'axios';
 
-import { AuthQuery } from '@/libs/features/auth';
-import { useAppSelector } from '@/libs/redux/store';
+import { AuthMutations } from '@/libs/features/auth';
+import { useAppSelector } from '@/libs/redux';
 import { axiosInstance } from '@/libs/axios';
 
 function useAuthQuery<
@@ -26,7 +25,7 @@ function useAuthQuery<
   options?: Omit<UseQueryOptions<TQueryFnData, TError, TData, TQueryKey>, 'queryKey' | 'queryFn'>,
 ) {
   const { auth } = useAppSelector((state) => state.auth);
-  const { mutate, status } = AuthQuery.useRefreshToken();
+  const { mutate, status } = AuthMutations.useRefreshToken();
 
   if (auth?.token.accessToken) {
     axiosInstance.defaults.headers.common.authorization = `Bearer ${auth?.token.accessToken}`;
