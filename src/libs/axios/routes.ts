@@ -1,5 +1,5 @@
 export enum routes {
-  shows = 'shows',
+  auth = 'auth',
   users = 'users',
   user = 'user',
   bands = 'bands',
