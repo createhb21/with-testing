@@ -92,7 +92,7 @@ export default class MyDocument extends Document {
   font-weight: normal;
   font-style: normal;
   font-display: fallback;
-  src: url('/fonts/soehne-mono-web-buch.woff2') format('woff2'), url('/fonts/soehne-mono-web-buch.woff') format('woff');
+  src: url('/fonts/soehne-mono-web-buch.woff2') format('woff2');
 }
 `,
             }}

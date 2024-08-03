@@ -2,6 +2,7 @@ module.exports = {
   root: true,
   env: {
     es6: true,
+    node: true,
     browser: true,
     jest: true,
   },
@@ -33,7 +34,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.ts', '*.tsx'],
+      files: ['**/*.ts', '**/*.tsx'],
       extends: ['airbnb-typescript', 'plugin:@typescript-eslint/recommended'],
       plugins: ['@typescript-eslint'],
       parser: '@typescript-eslint/parser',
@@ -41,9 +42,11 @@ module.exports = {
         project: ['./tsconfig.json'],
       },
       rules: {
-        '@typescript-eslint/naming-convention': 'off',
+        '@typescript-eslint/no-shadow': 'off',
         '@typescript-eslint/no-explicit-any': 'warn',
-        'import/no-extraneous-dependencies': 'off',
+        '@typescript-eslint/naming-convention': 'off',
+        '@typescript-eslint/no-use-before-define': 'off',
+        '@typescript-eslint/no-unused-expressions': 'off',
       },
     },
     {
@@ -75,14 +78,17 @@ module.exports = {
     'no-restricted-syntax': 'off',
     'react/button-has-type': 'off',
     'react/no-children-prop': 'off',
+    'react/no-unknown-property': 'off',
     'import/prefer-default-export': 'off',
     'react/jsx-props-no-spreading': 'off',
     'react/destructuring-assignment': 'off',
     'react/jsx-one-expression-per-line': 'off',
+    'import/no-extraneous-dependencies': 'off',
     'jsx-a11y/label-has-associated-control': 'off',
+    'react/require-default-props': 'off',
+    'react-hooks/exhaustive-deps': 'off',
     'react/jsx-uses-vars': 'error',
     'react/jsx-uses-react': 'error',
-    'react/require-default-props': 'off',
     'unused-imports/no-unused-imports': 'error',
     'unused-imports/no-unused-vars': [
       'warn',

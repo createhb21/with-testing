@@ -1,5 +1,3 @@
-import { Flex, Text } from '@radix-ui/themes';
-
 import type { FormFieldProps } from './FormField.types';
 
 export function FormField(props: FormFieldProps) {
@@ -12,13 +10,13 @@ export function FormField(props: FormFieldProps) {
 
   return (
     <label {...rest}>
-      <Flex direction="column">
-        <Text as="div" size="2" weight="medium" mb="1">
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div>
           {label}
           {/* {isRequired && <span>*</span>} */}
-        </Text>
+        </div>
         {children}
-      </Flex>
+      </div>
     </label>
   );
 }
