@@ -1,10 +1,12 @@
 import React from 'react';
 
 import { Home } from '@/libs/features';
-import { useAppSelector } from '@/libs/redux';
+import { useAtomValue } from 'jotai';
+
+import { authAtom } from '@/libs/features/auth';
 
 export default function HomePage() {
-  const { auth } = useAppSelector((state) => state.auth);
+  const auth = useAtomValue(authAtom);
 
   return auth?.token.accessToken ? <Home.Dashboard /> : <Home.Welcome />;
 }

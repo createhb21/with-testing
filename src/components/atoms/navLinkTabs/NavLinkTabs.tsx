@@ -1,7 +1,9 @@
 import React, { useMemo } from 'react';
 import { useRouter } from 'next/router';
-import { useAppSelector } from '@/libs/redux';
+import { useAtomValue } from 'jotai';
 import { useTheme } from 'styled-components';
+
+import { authAtom } from '@/libs/features/auth';
 
 import useNavLinkTabs from './NavLinkTabs.hooks';
 import { NavLinkTabsProps } from './NavLinkTabs.types';
@@ -9,7 +11,7 @@ import { wrap, item, indicatorStyle } from './NavLinkTabs.styled';
 
 export function NavLinkTabs({ tabs, toggleLoginDialog }: NavLinkTabsProps) {
   const theme = useTheme();
-  const { auth } = useAppSelector((state) => state.auth);
+  const auth = useAtomValue(authAtom);
 
   const router = useRouter();
   const { current, addRefs } = useNavLinkTabs();
