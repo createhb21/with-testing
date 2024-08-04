@@ -2,8 +2,9 @@ import React, { useCallback } from 'react';
 import { useRouter } from 'next/router';
 import { type UseFormReturn, useForm } from 'react-hook-form';
 
+import { Button } from '@/components/atoms';
 import { InputField } from '@/components/molecules';
-import { FullScreen, PanelBackgroundImage, Button } from '@/components/atoms';
+import { Layout } from '@/components/page';
 import { ROUTER } from '@/constants/router';
 
 interface ISignInForm {
@@ -21,12 +22,8 @@ export default function SignInPage() {
   const goSignUpPage = useCallback(() => router.push(ROUTER.AUTH.SIGNUP), []);
 
   return (
-    <FullScreen as="main">
-      <div>
-        <div style={{ overflow: 'hidden', position: 'absolute', width: '100%', height: '100%', inset: '0' }}>
-          <PanelBackgroundImage id="1" />
-        </div>
-
+    <Layout>
+      <div css={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', paddingTop: '60px' }}>
         <FormCard
           {...{
             methods,
@@ -35,7 +32,7 @@ export default function SignInPage() {
           }}
         />
       </div>
-    </FullScreen>
+    </Layout>
   );
 }
 

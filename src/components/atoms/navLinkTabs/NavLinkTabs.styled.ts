@@ -1,4 +1,4 @@
-import { css, DefaultTheme } from 'styled-components';
+import { css } from 'styled-components';
 
 const wrap = css`
   display: flex;
@@ -7,19 +7,19 @@ const wrap = css`
   gap: 0 30px;
 `;
 
-const item = (theme: DefaultTheme, isActive: boolean) => css`
+const item = (isActive: boolean) => css`
   font-size: 1.4rem;
   font-weight: 400;
   display: flex;
   flex-direction: row;
   align-items: center;
   position: relative;
-  height: 60px;
+  height: 58px;
   text-decoration: none;
-  color: ${({ theme }) => (isActive ? theme.colors.gray8 : theme.colors.gray3)};
+  color: ${({ theme }) => (isActive ? theme.colors.ruby10 : theme.colors.gray10)};
 
-  :hover {
-    color: ${({ theme }) => (isActive ? theme.colors.gray9 : theme.colors.gray5)};
+  &:hover {
+    color: ${({ theme }) => (isActive ? theme.colors.ruby10 : theme.colors.gray12)};
   }
 `;
 

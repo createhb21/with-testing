@@ -10003,15 +10003,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"styled-reset@npm:^4.5.2":
-  version: 4.5.2
-  resolution: "styled-reset@npm:4.5.2"
-  peerDependencies:
-    styled-components: ">=4.0.0 || >=5.0.0 || >=6.0.0"
-  checksum: 10c0/3e15586d2b4c1c37c473058747269d20ee4dcd88205718cec8f7c9c3b2cb99a220eddd958c073d1d9179e7b9682f6d601048fe62753ea789d661989d27bc8e00
-  languageName: node
-  linkType: hard
-
 "stylis@npm:4.3.2":
   version: 4.3.2
   resolution: "stylis@npm:4.3.2"
@@ -10919,7 +10910,6 @@ __metadata:
     sonner: "npm:1.5.0"
     start-server-and-test: "npm:^1.14.0"
     styled-components: "npm:^6.1.12"
-    styled-reset: "npm:^4.5.2"
     typescript: "npm:^5.3.2"
   languageName: unknown
   linkType: soft

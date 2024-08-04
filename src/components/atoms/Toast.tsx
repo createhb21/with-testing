@@ -14,7 +14,7 @@ function WelcomeToast() {
         description: (
           <>
             This is a high-performance, fashion store powered by Ably.{' '}
-            <a href="https://square.a-bly.com/" className="text-blue-600 hover:underline" target="_blank" rel="noreferrer">
+            <a href="https://square.a-bly.com/" target="_blank" rel="noreferrer">
               Sell your own
             </a>
             .

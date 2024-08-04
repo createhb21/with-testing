@@ -1,12 +1,16 @@
 import React from 'react';
 
-import { Home } from '@/libs/features';
 import { useAtomValue } from 'jotai';
 
-import { authAtom } from '@/libs/features/auth';
+import { Layout } from '@/components/page';
+import { Home, Auth } from '@/libs/features';
 
 export default function HomePage() {
-  const auth = useAtomValue(authAtom);
+  const auth = useAtomValue(Auth.authAtom);
 
-  return auth?.token.accessToken ? <Home.Dashboard /> : <Home.Welcome />;
+  return (
+    <Layout>
+      {auth?.token.accessToken ? <Home.Dashboard /> : <Home.Welcome />}
+    </Layout>
+  );
 }

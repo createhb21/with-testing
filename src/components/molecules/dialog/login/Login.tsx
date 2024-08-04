@@ -1,38 +1,29 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback } from 'react';
 import { type UseFormReturn, useForm } from 'react-hook-form';
-import { useRouter } from 'next/router';
 
 import { Button } from '@/components/atoms';
 import { InputField } from '@/components/molecules';
-import { Layout } from '@/components/page';
+import { Dialog } from '../Dialog';
+import { wrap } from './Login.styled';
+import type { IDialogProps } from '../Dialog.types';
 
-interface ISignUpForm {
+interface ISignInForm {
   email: string;
   password: string;
-  confirmPassword: string;
 }
 
-export default function SignUpPage() {
-  // const { resolvedTheme } = useTheme();
-
-  const router = useRouter();
-  const methods = useForm<ISignUpForm>();
-  const onSubmit = useCallback((data: ISignUpForm) => {
+export function Login({ ...props }: IDialogProps) {
+  const methods = useForm<ISignInForm>();
+  const onSubmit = useCallback((data: ISignInForm) => {
     console.log('data:', data);
-    router.back();
-  }, []);
-
-  const closeButton = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    if (closeButton.current) {
-      closeButton.current.focus();
-    }
   }, []);
 
   return (
-    <Layout>
-      <div css={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', paddingTop: '60px' }}>
+    <Dialog existFooter={false} opacity={0.5} {...props}>
+      <div css={wrap}>
+        <div>
+          <p>에이블리 로그인</p>
+        </div>
         <FormCard
           {...{
             methods,
@@ -40,7 +31,7 @@ export default function SignUpPage() {
           }}
         />
       </div>
-    </Layout>
+    </Dialog>
   );
 }
 
@@ -48,10 +39,11 @@ function FormCard({
   methods,
   onSubmit,
 }: {
-  methods: UseFormReturn<ISignUpForm>;
-  onSubmit: (data: ISignUpForm) => void;
+  methods: UseFormReturn<ISignInForm>;
+  onSubmit: (data: ISignInForm) => void;
 }) {
   const { register, handleSubmit, formState } = methods;
+
   const { errors } = formState;
 
   console.log('errors:', errors);
@@ -61,7 +53,7 @@ function FormCard({
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <div>
-            Sign up
+            Sign in
           </div>
         </div>
 
@@ -89,19 +81,7 @@ function FormCard({
         </div>
 
         <div>
-          <InputField
-            isRequired
-            label="Password Confirm"
-            id="card-password-confirm-field"
-            placeholder="Enter your confirm password"
-            {...register('confirmPassword', {
-              required: true,
-            })}
-          />
-        </div>
-
-        <div>
-          <Button type="submit">Sign up</Button>
+          <Button type="submit">Sign in</Button>
         </div>
       </form>
     </div>
