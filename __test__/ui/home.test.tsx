@@ -1,8 +1,9 @@
-import { theme } from '@/styles';
-import { render } from '@/utils/test/testUtils';
+import { ThemeProvider } from 'styled-components';
 
 import Home from 'pages';
-import { ThemeProvider } from 'styled-components';
+
+import { theme } from '@/styles';
+import { render } from '@/utils/test/testUtils';
 
 describe('HomePage', () => {
   const renderHomePage = () => render(

@@ -17,7 +17,7 @@ export function useSignin() {
       router.replace(path);
     },
     onError() {
-      router.replace(ROUTER.HOME);
+      alert('login error');
     },
   });
 }

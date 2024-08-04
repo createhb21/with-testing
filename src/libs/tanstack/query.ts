@@ -40,7 +40,6 @@ function useAuthQuery<
       if ((err as AxiosError)?.response?.status === 401 && auth) {
         auth?.token.refreshToken
             && mutate({
-              memberId: auth.memberId,
               refreshToken: auth.token.refreshToken,
             });
       }

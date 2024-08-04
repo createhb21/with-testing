@@ -6,16 +6,15 @@ import { Button } from '@/components/atoms';
 import { InputField } from '@/components/molecules';
 import { Layout } from '@/components/page';
 import { ROUTER } from '@/constants/router';
-
-interface ISignInForm {
-  email: string;
-  password: string;
-}
+import { AuthMutations } from '@/libs/features/auth';
+import { ISignInParams } from '@/libs/features/auth/types';
 
 export default function SignInPage() {
-  const methods = useForm<ISignInForm>();
-  const onSubmit = useCallback((data: ISignInForm) => {
-    console.log('data:', data);
+  const { mutate } = AuthMutations.useSignin();
+
+  const methods = useForm<ISignInParams>();
+  const onSubmit = useCallback((data: ISignInParams) => {
+    mutate(data);
   }, []);
 
   const router = useRouter();
@@ -41,8 +40,8 @@ function FormCard({
   onSubmit,
   goSignUpPage,
 }: {
-  methods: UseFormReturn<ISignInForm>;
-  onSubmit: (data: ISignInForm) => void;
+  methods: UseFormReturn<ISignInParams>;
+  onSubmit: (data: ISignInParams) => void;
   goSignUpPage: VoidFunction;
 }) {
   const { register, handleSubmit, formState } = methods;

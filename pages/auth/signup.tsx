@@ -5,20 +5,18 @@ import { useRouter } from 'next/router';
 import { Button } from '@/components/atoms';
 import { InputField } from '@/components/molecules';
 import { Layout } from '@/components/page';
-
-interface ISignUpForm {
-  email: string;
-  password: string;
-  confirmPassword: string;
-}
+import { AuthMutations } from '@/libs/features/auth';
+import { ISignUpParams } from '@/libs/features/auth/types';
+import IconClose from '@/static/icons/system/IconClose';
+import { ROUTER } from '@/constants/router';
 
 export default function SignUpPage() {
-  // const { resolvedTheme } = useTheme();
+  const { mutate } = AuthMutations.useSignup();
 
   const router = useRouter();
-  const methods = useForm<ISignUpForm>();
-  const onSubmit = useCallback((data: ISignUpForm) => {
-    console.log('data:', data);
+  const methods = useForm<ISignUpParams>();
+  const onSubmit = useCallback((data: ISignUpParams) => {
+    mutate(data);
     router.back();
   }, []);
 
@@ -32,6 +30,7 @@ export default function SignUpPage() {
 
   return (
     <Layout>
+      <Button ref={closeButton} onClick={() => router.push(ROUTER.HOME)}><IconClose /></Button>
       <div css={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', paddingTop: '60px' }}>
         <FormCard
           {...{
@@ -48,8 +47,8 @@ function FormCard({
   methods,
   onSubmit,
 }: {
-  methods: UseFormReturn<ISignUpForm>;
-  onSubmit: (data: ISignUpForm) => void;
+  methods: UseFormReturn<ISignUpParams>;
+  onSubmit: (data: ISignUpParams) => void;
 }) {
   const { register, handleSubmit, formState } = methods;
   const { errors } = formState;
