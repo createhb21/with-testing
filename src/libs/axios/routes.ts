@@ -2,7 +2,7 @@ export enum routes {
   auth = 'auth',
   users = 'users',
   user = 'user',
-  bands = 'bands',
-  reservations = 'reservations',
+  quiz = 'quiz',
+  statistics = 'statistics',
   images = 'images',
 }

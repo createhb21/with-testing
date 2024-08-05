@@ -6,8 +6,6 @@ export const MEMBER_STATUS = ['PENDING', 'ACTIVATED', 'DORMANT', 'WITHDRAWN'] as
 
 export type MemberStatusType = (typeof MEMBER_STATUS)[number];
 
-export type MembeIdBase = { memberId: number };
-
 export interface IToken {
   /** 액세스 토큰 */
   accessToken: string;
@@ -19,10 +17,9 @@ export interface IToken {
   refreshTokenExpiresIn: number;
 }
 
-export interface ISocialSignInParams {
-  identity: string;
-  nonce?: string;
-  provider: 'KAKAO' | 'GOOGLE';
+export interface ISignInParams {
+  email: string;
+  password: string;
 }
 
 export interface ITermsAgreement {
@@ -30,17 +27,17 @@ export interface ITermsAgreement {
   SERVICE_TERMS: boolean;
 }
 
-export interface ISignUpParams extends MembeIdBase {
-  nickname: string;
-  profileImageUrl: string;
-  termsAgreements: ITermsAgreement;
+export interface ISignUpParams {
+  email: string;
+  password: string;
+  confirmPassword: string;
 }
 
-export interface IRefreshTokenParams extends MembeIdBase {
+export interface IRefreshTokenParams {
   refreshToken: string;
 }
 
-export interface IAuthResponseBase extends MembeIdBase {
+export interface IAuthResponseBase {
   token: IToken;
 }
 

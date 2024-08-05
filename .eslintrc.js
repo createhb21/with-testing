@@ -15,8 +15,9 @@ module.exports = {
     'plugin:jsx-a11y/recommended',
     'plugin:react/jsx-runtime',
     'plugin:@next/next/recommended',
+    'plugin:prettier/recommended',
   ],
-  plugins: ['unused-imports'],
+  plugins: ['unused-imports', 'prettier'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -69,9 +70,11 @@ module.exports = {
     },
   ],
   rules: {
+    'max-len': 'off',
     'no-unused-vars': 'off',
     'react/no-danger': 'off',
     'import/no-cycle': 'off',
+    'react/prop-types': 'off',
     'no-param-reassign': 'off',
     'no-underscore-dangle': 'off',
     'object-curly-newline': 'off',
@@ -84,7 +87,10 @@ module.exports = {
     'react/destructuring-assignment': 'off',
     'react/jsx-one-expression-per-line': 'off',
     'import/no-extraneous-dependencies': 'off',
+    'react/function-component-definition': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
     'jsx-a11y/label-has-associated-control': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
     'react/require-default-props': 'off',
     'react-hooks/exhaustive-deps': 'off',
     'react/jsx-uses-vars': 'error',

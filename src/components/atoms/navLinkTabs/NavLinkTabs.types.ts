@@ -5,5 +5,4 @@ interface INavLinkData {
 
 export interface NavLinkTabsProps {
   tabs: INavLinkData[];
-  toggleLoginDialog: VoidFunction;
 }

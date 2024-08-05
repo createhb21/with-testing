@@ -9,10 +9,10 @@ import {
 } from '@tanstack/react-query';
 import { useEffect } from 'react';
 import { AxiosError } from 'axios';
+import { useAtomValue } from 'jotai';
 
-import { AuthMutations } from '@/libs/features/auth';
-import { useAppSelector } from '@/libs/redux';
 import { axiosInstance } from '@/libs/axios';
+import { AuthMutations, authAtom } from '@/libs/features/auth';
 
 function useAuthQuery<
     TQueryFnData = unknown,
@@ -24,7 +24,8 @@ function useAuthQuery<
   queryFn: QueryFunction<TQueryFnData, TQueryKey>,
   options?: Omit<UseQueryOptions<TQueryFnData, TError, TData, TQueryKey>, 'queryKey' | 'queryFn'>,
 ) {
-  const { auth } = useAppSelector((state) => state.auth);
+  const auth = useAtomValue(authAtom);
+
   const { mutate, status } = AuthMutations.useRefreshToken();
 
   if (auth?.token.accessToken) {
@@ -39,7 +40,6 @@ function useAuthQuery<
       if ((err as AxiosError)?.response?.status === 401 && auth) {
         auth?.token.refreshToken
             && mutate({
-              memberId: auth.memberId,
               refreshToken: auth.token.refreshToken,
             });
       }
@@ -61,7 +61,7 @@ function useAuthMutation<TData = unknown, TError = unknown, TVariables = void, T
   mutationFn: MutationFunction<TData, TVariables>,
   options?: Omit<UseMutationOptions<TData, TError, TVariables, TContext>, 'mutationKey' | 'mutationFn'>,
 ) {
-  const { auth } = useAppSelector((state) => state.auth);
+  const auth = useAtomValue(authAtom);
   if (auth?.token.accessToken) {
     axiosInstance.defaults.headers.common.authorization = `Bearer ${auth?.token.accessToken}`;
   }

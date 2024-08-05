@@ -1,8 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
-import { reset } from 'styled-reset';
 
 const GlobalStyles = createGlobalStyle`
-  ${reset}
   *,
   *::before,
   *::after {
@@ -26,8 +24,11 @@ const GlobalStyles = createGlobalStyle`
 
   button {
     cursor: pointer;
-    border: none;
-    background-color: transparent;
+    &:not([aria-label="Close toast"]){
+      border: none;
+      background-color: transparent;
+    }
+
 
     &[disabled] {
       cursor: not-allowed;
@@ -61,7 +62,7 @@ const GlobalStyles = createGlobalStyle`
   [tabindex]:focus-visible,
   input:focus-visible,
   button:focus-visible {
-    outline-color: ${({ theme }) => theme.colors.blue7};
+    outline-color: ${({ theme }) => theme.colors.ruby7};
   }
 `;
 

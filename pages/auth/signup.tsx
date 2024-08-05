@@ -1,23 +1,25 @@
 import React, { useCallback, useEffect, useRef } from 'react';
-import { type UseFormReturn, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
 
+import { Button } from '@/components/atoms';
 import { InputField } from '@/components/molecules';
-import { FullScreen, PanelBackgroundImage, Button } from '@/components/atoms';
-
-interface ISignUpForm {
-  email: string;
-  password: string;
-  confirmPassword: string;
-}
+import { Layout } from '@/components/page';
+import { AuthMutations } from '@/libs/features/auth';
+import { ISignUpParams } from '@/libs/features/auth/types';
+import IconClose from '@/static/icons/system/IconClose';
+import { ROUTER } from '@/constants/router';
 
 export default function SignUpPage() {
-  // const { resolvedTheme } = useTheme();
+  const { mutate } = AuthMutations.useSignup();
 
   const router = useRouter();
-  const methods = useForm<ISignUpForm>();
-  const onSubmit = useCallback((data: ISignUpForm) => {
-    console.log('data:', data);
+  const { register, handleSubmit,
+    getValues,
+    setError,
+  } = useForm<ISignUpParams>({ mode: 'onBlur' });
+  const onSubmit = useCallback((data: ISignUpParams) => {
+    mutate(data);
     router.back();
   }, []);
 
@@ -30,83 +32,87 @@ export default function SignUpPage() {
   }, []);
 
   return (
-    <FullScreen as="main">
-      <div>
-        <div style={{ overflow: 'hidden', position: 'absolute', width: '100%', height: '100%', inset: '0' }}>
-          <PanelBackgroundImage id="1" />
-        </div>
+    <Layout>
+      <Button ref={closeButton} onClick={() => router.push(ROUTER.HOME)}><IconClose /></Button>
+      <div css={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', paddingTop: '60px' }}>
+        <div style={{ width: 400, position: 'relative' }}>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div>
+              <div>
+                Sign up
+              </div>
+            </div>
 
-        <FormCard
-          {...{
-            methods,
-            onSubmit,
-          }}
-        />
+            <div>
+              <InputField
+                isRequired
+                label="Email"
+                placeholder="Enter your email address"
+                {...register('email', {
+                  required: '이메일을 올바르게 입력해주세요.',
+                  pattern: {
+                    value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
+                    message: '이메일을 올바르게 입력해주세요.',
+                  },
+                })}
+              />
+            </div>
+
+            <div>
+              <InputField
+                isRequired
+                type="password"
+                label="Password"
+                id="card-password-field"
+                placeholder="Enter your password"
+                {...register('password', {
+                  required: '비밀번호를 입력해주세요.',
+                  minLength: {
+                    value: 8,
+                    message:
+                  '비밀번호는 숫자, 영문 대문자, 소문자, 특수문자를 포함한 8글자 이상이어야 합니다.',
+                  },
+                  pattern: {
+                    value:
+                  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+                    message:
+                  '비밀번호는 숫자, 영문 대문자, 소문자, 특수문자를 포함한 8글자 이상이어야 합니다.',
+                  },
+                })}
+              />
+            </div>
+
+            <div>
+              <InputField
+                isRequired
+                type="password"
+                label="Password Confirm"
+                id="card-password-confirm-field"
+                placeholder="Enter your confirm password"
+                {...register('confirmPassword', {
+                  required: '비밀번호를 입력해주세요.',
+                  minLength: {
+                    value: 8,
+                    message:
+                  '비밀번호는 숫자, 영문 대문자, 소문자, 특수문자를 포함한 8글자 이상이어야 합니다.',
+                  },
+                  onBlur: (e) => {
+                    if (e.target.value !== getValues('password')) {
+                      setError('confirmPassword', {
+                        message: '비밀번호가 일치하지 않습니다.',
+                      });
+                    }
+                  },
+                })}
+              />
+            </div>
+
+            <div>
+              <Button type="submit">Sign up</Button>
+            </div>
+          </form>
+        </div>
       </div>
-    </FullScreen>
-  );
-}
-
-function FormCard({
-  methods,
-  onSubmit,
-}: {
-  methods: UseFormReturn<ISignUpForm>;
-  onSubmit: (data: ISignUpForm) => void;
-}) {
-  const { register, handleSubmit, formState } = methods;
-  const { errors } = formState;
-
-  console.log('errors:', errors);
-
-  return (
-    <div style={{ width: 400, position: 'relative' }}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <div>
-            Sign up
-          </div>
-        </div>
-
-        <div>
-          <InputField
-            isRequired
-            label="Email"
-            placeholder="Enter your email address"
-            {...register('email', {
-              required: true,
-            })}
-          />
-        </div>
-
-        <div>
-          <InputField
-            isRequired
-            label="Password"
-            id="card-password-field"
-            placeholder="Enter your password"
-            {...register('password', {
-              required: true,
-            })}
-          />
-        </div>
-
-        <div>
-          <InputField
-            isRequired
-            label="Password Confirm"
-            id="card-password-confirm-field"
-            placeholder="Enter your confirm password"
-            {...register('confirmPassword', {
-              required: true,
-            })}
-          />
-        </div>
-
-        <div>
-          <Button type="submit">Sign up</Button>
-        </div>
-      </form>
-    </div>
+    </Layout>
   );
 }

@@ -9,7 +9,7 @@ export type RootState = ReturnType<typeof store.getState>;
 type AppDispatch = typeof store.dispatch;
 
 const persistConfig = {
-  key: process.env.NEXT_PUBLIC_APP_NAME || 'ablyteam',
+  key: 'commerceteam',
   storage,
   whitelist: ['auth'],
 };

@@ -1,14 +1,14 @@
 import {
   gray,
-  blue,
   red,
+  ruby,
   green,
 } from '@radix-ui/colors';
 
 export const colors = {
   ...gray,
-  ...blue,
   ...red,
+  ...ruby,
   ...green,
 } as const;
 
