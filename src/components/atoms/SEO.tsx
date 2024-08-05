@@ -2,8 +2,8 @@ import Head from 'next/head';
 
 const site = {
   siteMetadata: {
-    title: '에이블리 팀',
-    description: '모두가 더 나은 삶을 살 수 있는 넥스트 커머스를 만듭니다',
+    title: '커머스 팀',
+    description: '당신이 이길 수 있는 새로운 커머스를 만들어요',
     author: '@createhb21',
     siteUrl: 'https://with-testing.vercel.app',
     languages: {
@@ -25,22 +25,14 @@ export function SEO({ title, description }: { title?: string; description?: stri
       />
       <meta
         name="twitter:description"
-        content="에이블리 - 모두가 더 나은 삶을 살 수 있는 넥스트 커머스를 만듭니다"
+        content="커머스 팀 - 당신이 이길 수 있는 새로운 커머스를 만들어요"
       />
       <meta name="twitter:creator" content={site.siteMetadata.author} />
-      <meta
-        property="twitter:image"
-        content="https://my.a-bly.com/img/ABLY.cf66bd51.png"
-      />
       <meta name="twitter:card" content="summary_large_image" />
       <meta property="og:type" content="website" />
       <meta
         property="og:description"
-        content="에이블리 -모두가 더 나은 삶을 살 수 있는 넥스트 커머스를 만듭니다"
-      />
-      <meta
-        property="og:image"
-        content="https://my.a-bly.com/img/ABLY.cf66bd51.png"
+        content="커머스 팀 - 당신이 이길 수 있는 새로운 커머스를 만들어요"
       />
     </Head>
   );

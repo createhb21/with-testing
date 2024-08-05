@@ -21,8 +21,8 @@ export function Header() {
     <>
       <header css={wrapper}>
         <div css={logoSection}>
-          <Link href={ROUTER.HOME} css={{ height: '58px' }}>
-            <img src="/logo-text.svg" width={76} height={58} alt="" />
+          <Link href={ROUTER.HOME} css={{ fontWeight: '700' }}>
+            LOGO
           </Link>
           <NavLinkTabs
             tabs={[

@@ -22,7 +22,7 @@ export function Login({ ...props }: IDialogProps) {
     <Dialog existFooter={false} opacity={0.5} {...props}>
       <div css={wrap}>
         <div>
-          <p>에이블리 로그인</p>
+          <p>로그인</p>
         </div>
         <FormCard
           {...{

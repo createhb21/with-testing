@@ -12,7 +12,7 @@ import { ISignInParams } from '@/libs/features/auth/types';
 export default function SignInPage() {
   const { mutate } = AuthMutations.useSignin();
 
-  const methods = useForm<ISignInParams>();
+  const methods = useForm<ISignInParams>({ mode: 'onBlur' });
   const onSubmit = useCallback((data: ISignInParams) => {
     mutate(data);
   }, []);
@@ -65,7 +65,11 @@ function FormCard({
             label="Email"
             placeholder="Enter your email address"
             {...register('email', {
-              required: true,
+              required: '이메일을 올바르게 입력해주세요.',
+              pattern: {
+                value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
+                message: '이메일을 올바르게 입력해주세요.',
+              },
             })}
           />
         </div>
@@ -73,11 +77,23 @@ function FormCard({
         <div>
           <InputField
             isRequired
+            type="password"
             label="Password"
             id="card-password-field"
             placeholder="Enter your password"
             {...register('password', {
-              required: true,
+              required: '비밀번호를 입력해주세요.',
+              minLength: {
+                value: 8,
+                message:
+                  '비밀번호는 숫자, 영문 대문자, 소문자, 특수문자를 포함한 8글자 이상이어야 합니다.',
+              },
+              pattern: {
+                value:
+                  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+                message:
+                  '비밀번호는 숫자, 영문 대문자, 소문자, 특수문자를 포함한 8글자 이상이어야 합니다.',
+              },
             })}
           />
         </div>
