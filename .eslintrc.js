@@ -15,8 +15,9 @@ module.exports = {
     'plugin:jsx-a11y/recommended',
     'plugin:react/jsx-runtime',
     'plugin:@next/next/recommended',
+    'plugin:prettier/recommended',
   ],
-  plugins: ['unused-imports'],
+  plugins: ['unused-imports', 'prettier'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
