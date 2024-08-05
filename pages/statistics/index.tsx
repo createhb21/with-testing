@@ -5,7 +5,7 @@ import { Layout } from '@/components/page';
 export default function StatisticsPage() {
   return (
     <Layout>
-      hi
+      StatisticsPage
     </Layout>
   );
 }

@@ -5,7 +5,7 @@ import { Layout } from '@/components/page';
 export default function QuizPage() {
   return (
     <Layout>
-      hi
+      QuizPage
     </Layout>
   );
 }
