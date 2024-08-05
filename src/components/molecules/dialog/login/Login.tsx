@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { type UseFormReturn, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/atoms';
 import { InputField } from '@/components/molecules';
@@ -13,7 +13,7 @@ interface ISignInForm {
 }
 
 export function Login({ ...props }: IDialogProps) {
-  const methods = useForm<ISignInForm>();
+  const { register, handleSubmit } = useForm<ISignInForm>();
   const onSubmit = useCallback((data: ISignInForm) => {
     console.log('data:', data);
   }, []);
@@ -24,66 +24,43 @@ export function Login({ ...props }: IDialogProps) {
         <div>
           <p>로그인</p>
         </div>
-        <FormCard
-          {...{
-            methods,
-            onSubmit,
-          }}
-        />
+        <div style={{ width: 400, position: 'relative' }}>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div>
+              <div>
+                Sign in
+              </div>
+            </div>
+
+            <div>
+              <InputField
+                isRequired
+                label="Email"
+                placeholder="Enter your email address"
+                {...register('email', {
+                  required: true,
+                })}
+              />
+            </div>
+
+            <div>
+              <InputField
+                isRequired
+                label="Password"
+                id="card-password-field"
+                placeholder="Enter your password"
+                {...register('password', {
+                  required: true,
+                })}
+              />
+            </div>
+
+            <div>
+              <Button type="submit">Sign in</Button>
+            </div>
+          </form>
+        </div>
       </div>
     </Dialog>
-  );
-}
-
-function FormCard({
-  methods,
-  onSubmit,
-}: {
-  methods: UseFormReturn<ISignInForm>;
-  onSubmit: (data: ISignInForm) => void;
-}) {
-  const { register, handleSubmit, formState } = methods;
-
-  const { errors } = formState;
-
-  console.log('errors:', errors);
-
-  return (
-    <div style={{ width: 400, position: 'relative' }}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <div>
-            Sign in
-          </div>
-        </div>
-
-        <div>
-          <InputField
-            isRequired
-            label="Email"
-            placeholder="Enter your email address"
-            {...register('email', {
-              required: true,
-            })}
-          />
-        </div>
-
-        <div>
-          <InputField
-            isRequired
-            label="Password"
-            id="card-password-field"
-            placeholder="Enter your password"
-            {...register('password', {
-              required: true,
-            })}
-          />
-        </div>
-
-        <div>
-          <Button type="submit">Sign in</Button>
-        </div>
-      </form>
-    </div>
   );
 }
