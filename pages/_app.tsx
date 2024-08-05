@@ -1,50 +1,30 @@
-import '@radix-ui/themes/styles.css';
-import '@/styles/globals.css';
-
 import React from 'react';
-import Head from 'next/head';
-import { ThemeProvider } from 'next-themes';
-import { Theme } from '@radix-ui/themes';
-
 import type { AppProps } from 'next/app';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { ThemeProvider } from 'styled-components';
 
-import { QueryProvider } from '@/libs';
-import { Favicon, Toaster, WelcomeToast } from '@/components/atoms';
+import { store, persistor } from '@/libs/redux';
+import { QueryProvider } from '@/libs/tanstack/provider';
+import { SEO, Toaster, WelcomeToast } from '@/components/atoms';
+import { GlobalStyles, theme } from '@/styles';
 
-function Pages({ Component, pageProps }: AppProps) {
-  return (
-    <Theme accentColor="ruby" grayColor="mauve" className="radix-themes-custom-fonts">
-      <Favicon />
-      <QueryProvider pageProps={pageProps}>
-        <Component {...pageProps} />
-        <Toaster closeButton />
-        <WelcomeToast />
-      </QueryProvider>
-    </Theme>
-  );
-}
-
-export default function App(props: AppProps) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <Head>
-        <title>에이블리 팀</title>
-        <meta
-          name="description"
-          content="모두가 더 나은 삶을 살 수 있는 넥스트 커머스를 만듭니다"
-        />
-        <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width"
-        />
-      </Head>
-      <ThemeProvider
-        disableTransitionOnChange
-        attribute="class"
-        value={{ light: 'light-theme', dark: 'dark-theme' }}
-        defaultTheme="system"
-        children={<Pages {...props} />}
-      />
+      <SEO />
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <Provider store={store}>
+          <PersistGate persistor={persistor}>
+            <QueryProvider pageProps={pageProps}>
+              <Component {...pageProps} />
+              <Toaster closeButton />
+              <WelcomeToast />
+            </QueryProvider>
+          </PersistGate>
+        </Provider>
+      </ThemeProvider>
     </>
   );
 }

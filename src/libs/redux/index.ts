@@ -1,0 +1,36 @@
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux';
+import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
+import { authReducer } from '@/libs/features/auth';
+
+export type RootState = ReturnType<typeof store.getState>;
+type AppDispatch = typeof store.dispatch;
+
+const persistConfig = {
+  key: process.env.NEXT_PUBLIC_APP_NAME || 'ablyteam',
+  storage,
+  whitelist: ['auth'],
+};
+
+const reducers = combineReducers({
+  auth: authReducer,
+});
+const reducer = persistReducer(persistConfig, reducers);
+
+const store = configureStore({
+  reducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }),
+});
+
+const persistor = persistStore(store);
+
+const useAppDispatch = () => useDispatch<AppDispatch>();
+const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+
+export { store, persistor, useAppDispatch, useAppSelector };

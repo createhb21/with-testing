@@ -1,9 +1,9 @@
 import React, { PropsWithChildren } from 'react';
-import { QueryClient, QueryClientProvider, HydrationBoundary } from '@tanstack/react-query';
+import { QueryClient, QueryClientProvider, Hydrate } from '@tanstack/react-query';
 
 import type { AppProps } from 'next/app';
 
-export default function QueryProvider({
+export function QueryProvider({
   pageProps,
   children,
 }: PropsWithChildren<{ pageProps: AppProps['pageProps'] }>) {
@@ -22,7 +22,7 @@ export default function QueryProvider({
 
   return (
     <QueryClientProvider client={queryClient}>
-      <HydrationBoundary state={pageProps.dehydratedState}>{children}</HydrationBoundary>
+      <Hydrate state={pageProps.dehydratedState}>{children}</Hydrate>
     </QueryClientProvider>
   );
 }

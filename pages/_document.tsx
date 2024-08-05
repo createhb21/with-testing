@@ -62,28 +62,28 @@ export default class MyDocument extends Document {
 @font-face {
   font-family: 'Adobe Text Pro';
   font-weight: 400;
-  font-display: swap;
+  font-display: fallback;
   src: url(/fonts/AdobeTextPro-Regular.woff2) format('woff2');
 }
 
 @font-face {
   font-family: 'Untitled Sans';
   font-weight: 400;
-  font-display: swap;
+  font-display: fallback;
   src: url('https://cdn.workos.com/fonts/untitled-sans-regular-v2.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'Untitled Sans';
   font-weight: 500;
-  font-display: swap;
+  font-display: fallback;
   src: url('https://cdn.workos.com/fonts/untitled-sans-medium-v2.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'Untitled Sans';
   font-weight: 700;
-  font-display: swap;
+  font-display: fallback;
   src: url('https://cdn.workos.com/fonts/untitled-sans-medium-v2.woff2') format('woff2');
 }
 
@@ -91,8 +91,8 @@ export default class MyDocument extends Document {
   font-family: 'Söhne Mono';
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
-  src: url('/fonts/soehne-mono-web-buch.woff2') format('woff2'), url('/fonts/soehne-mono-web-buch.woff') format('woff');
+  font-display: fallback;
+  src: url('/fonts/soehne-mono-web-buch.woff2') format('woff2');
 }
 `,
             }}
