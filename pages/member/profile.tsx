@@ -5,7 +5,7 @@ import { Layout } from '@/components/page';
 export default function ProfilePage() {
   return (
     <Layout>
-      hi
+      ProfilePage
     </Layout>
   );
 }
