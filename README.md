@@ -32,3 +32,10 @@ Run `yarn dev`. The app will be found at [http://localhost:3000]
 ```bash
 $ yarn dev
 ```
+
+---
+
+## This repository...
+- Practice TDD, using jest & cypress and next.js.
+- Practice custom ESLint configuration.
+- Practice CI yml scripts
