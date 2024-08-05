@@ -13,11 +13,7 @@ function WelcomeToast() {
         },
         description: (
           <>
-            This is a high-performance, fashion store.{' '}
-            <a href="https://square.a-bly.com/" target="_blank" rel="noreferrer">
-              Sell your own
-            </a>
-            .
+            This is a high-performance, fashion store.{' '}Sell your own.
           </>
         ),
       });
